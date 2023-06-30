@@ -82,7 +82,7 @@ async function cancelBooking(bookingId) {
             await transaction.commit();
             return true;
         }
-        await axios.patch(`${ServerConfig.FLIGHT_SERVICE}/api/v1/flights/${bookingDetails.flightId}/seats`, {
+        await axios.patch(`http://localhost:3000/api/v1/flight/${bookingDetails.flightId}/seats`, {
             seats: bookingDetails.noofSeats,
             dec: 0
         });
@@ -108,6 +108,6 @@ async function cancelOldBookings() {
 
 module.exports = {
     createBooking,
-    // makePayment,
-    // cancelOldBookings
+    makePayment,
+    cancelOldBookings
 }
