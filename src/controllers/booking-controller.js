@@ -1,22 +1,24 @@
 const { StatusCodes } = require('http-status-codes');
 const { BookingService } = require('../services');
+const { response } = require("express");
 
-const inMemDb = {};
 
 async function createBooking(req, res) {
+    
+    // console.log(req.body);
+
     try {
-        console.log(req.body);
-        const response = await BookingService.createBooking({
+        const respo = await BookingService.createBooking({
             flightId: req.body.flightId,
             userId: req.body.userId,
-            noofSeats: req.body.noofSeats
+            noofseats: req.body.noofseats
         });
         return res
-        .status(StatusCodes.CREATED)
+        .status(StatusCodes.OK)
         .json({
             success:true,
             message: "done done",
-            data:response
+            data:respo
         });
     } catch(error) {
         return res
