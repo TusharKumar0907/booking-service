@@ -2,10 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 const { BookingService } = require('../services');
 const { response } = require("express");
 
-
 async function createBooking(req, res) {
-    
-    // console.log(req.body);
 
     try {
         const respo = await BookingService.createBooking({
@@ -55,6 +52,7 @@ async function makePayment(req, res) {
                 });
     }
 }
+
 
 module.exports = {
     createBooking,
